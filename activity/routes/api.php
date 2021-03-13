@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use app\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('client/balance', 'ClientController@balance');
+Route::get('client/dividend', 'ClientController@dividend');
+Route::patch('client/{client}/deposit/{amount}', 'ClientController@deposit');
+Route::get('client/{client}', 'ClientController@show');
+Route::post('client', 'ClientController@Store');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
